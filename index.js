@@ -34,17 +34,15 @@ enterPin("1234");
 // //WITHDRAW FROM THEIR ACCOUNT
 const withdrawAmount = (amount) => {
     
-    if ( amount < balance) {
+    if ( (amount < balance) && (amount < 251)) {
         balance -= amount;
         transactionLogs.push(`£${amount} withdrawn from your account`)
         console.log(`Successful transaction! You have withdrawn £${amount} and your new balance is £${balance}`)
         return balance;
-    }
-    else if ( amount > 250) {
-        return;
+    } else if ( amount > 251) {
         console.log("You have reached your maximum withdrawal amount today")
-    }
-    else {
+        return;
+    } else {
         console.log("Sorry you have insufficient funds!")
 
     }
@@ -58,8 +56,7 @@ const depositAmount = (deposit) => {
         transactionLogs.push(`£${deposit} deposited into your account`)
         console.log(`Successful transaction! You have deposited £${deposit} and your new balance is £${balance}`)
         return balance;  
-    }
-    else {
+    } else {
         console.log("Sorry you have reached the maximum you can deposit today")
     }
 }
@@ -91,6 +88,41 @@ console.log(pin);
 // changePin("0000")
 
 
+// CONVERSION
+
+const convertCurrency = (currency = "USD", amount) => {
+    console.log("Please select your amount and currency you wish to convert to")
+    if (currency === "USD") {
+        currencyConverted = amount * 1.2;
+        console.log(`You have successfully converted £${amount} to $${currencyConverted}`);
+        transactionLogs.push(`Converted £${amount} to $${currencyConverted}`);
+        return currencyConverted;
+    } else if (currency === "EUR") {
+        currencyConverted = amount * 1.1;
+        console.log(`You have successfully converted £${amount} to €${currencyConverted}}`);
+        transactionLogs.push(`Converted £${amount} to €${currencyConverted}`);
+        return currencyConverted;
+    } else if (currency === "INR") {
+        currencyConverted = amount * 94.6;
+        console.log(`You have successfully converted £${amount} to ₹${currencyConverted}}`);
+        transactionLogs.push(`Converted £${amount} to ₹${currencyConverted}`);
+        return currencyConverted;
+    } else if (currency === "AUD") {
+        currencyConverted = amount * 1.9;
+        console.log(`You have successfully converted £${amount} to A$${currencyConverted}}`);
+        transactionLogs.push(`Converted £${amount} to A$${currencyConverted}`);
+        return currencyConverted;
+    } else {
+        console.log("Sorry, please select your currency and amount you wish to convert")
+    }
+}
+
+// convertCurrency("AUD",100);
+
+// STATEMENT OF ACTIONS
+console.log(`Today you have done the following transactions:${transactionLogs}`)
+// console.log(`transaction logs`, transactionLogs)
+
 //SELET OPTION
 const selectOption = (optionSelected) => {
     console.log("Please select ")
@@ -108,40 +140,9 @@ const selectOption = (optionSelected) => {
         changePin("9999");
     } else if (optionSelected === 5) {
         console.log("You have selected: Convert currency");
-        
+        convertCurrency("AUD",100);
     } else {
         console.log("Please select from Options 1-5")
     }
 }
-selectOption(5);
-
-// STATEMENT OF ACTIONS
-console.log(`Today you have done the following transactions:${transactionLogs}`)
-// console.log(`transaction logs`, transactionLogs)
-
-// CONVERSION
-
-const convertCurrency = (currency, amount) => {
-    console.log("Please select your amount and currency you wish to convert to" )
-    if (currency === "USD") {
-        currencyConverted = amount * 1.2;
-        console.log(`You have successfully converted £${amount} to $${currencyConverted}`)
-        return currencyConverted;
-    } else if (currency === "EUR") {
-        currencyConverted = amount * 1.1;
-        console.log(`You have successfully converted £${amount} to €${currencyConverted}}`)
-        return currencyConverted;
-    } else if (currency === "INR") {
-        currencyConverted = amount * 94.6;
-        console.log(`You have successfully converted £${amount} to ₹${currencyConverted}}`)
-        return currencyConverted;
-    } else if (currency === "AUD") {
-        currencyConverted = amount * 1.9;
-        console.log(`You have successfully converted £${amount} to A$${currencyConverted}}`)
-        return currencyConverted;
-    } else {
-        console.log("Sorry, please select your currency and amount you wish to convert")
-    }
-}
-
-convertCurrency("AUD", 100);
+selectOption(2);
