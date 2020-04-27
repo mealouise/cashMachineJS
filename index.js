@@ -4,6 +4,7 @@ let balance = 500;
 let pinAttempts = 0;
 let pin = "0354";
 let transactionLogs = [];
+let currencyConverted;
 
 
 //ENTER PIN
@@ -105,8 +106,11 @@ const selectOption = (optionSelected) => {
     } else if (optionSelected === 4) {
         console.log("You have selected: Change pin number");
         changePin("9999");
+    } else if (optionSelected === 5) {
+        console.log("You have selected: Convert currency");
+        
     } else {
-        console.log("Please select from Options 1-4")
+        console.log("Please select from Options 1-5")
     }
 }
 selectOption(5);
@@ -117,13 +121,27 @@ console.log(`Today you have done the following transactions:${transactionLogs}`)
 
 // CONVERSION
 
-const convertCurrency = (country, amount) => {
-    console.log("Please select your amount and currency you wish to current to" )
-    if (country === "USD") {
-        return amount * 1.2;
-    } else if (country === "EUR") {
-        return amount * 1.1
+const convertCurrency = (currency, amount) => {
+    console.log("Please select your amount and currency you wish to convert to" )
+    if (currency === "USD") {
+        currencyConverted = amount * 1.2;
+        console.log(`You have successfully converted £${amount} to $${currencyConverted}`)
+        return currencyConverted;
+    } else if (currency === "EUR") {
+        currencyConverted = amount * 1.1;
+        console.log(`You have successfully converted £${amount} to €${currencyConverted}}`)
+        return currencyConverted;
+    } else if (currency === "INR") {
+        currencyConverted = amount * 94.6;
+        console.log(`You have successfully converted £${amount} to ₹${currencyConverted}}`)
+        return currencyConverted;
+    } else if (currency === "AUD") {
+        currencyConverted = amount * 1.9;
+        console.log(`You have successfully converted £${amount} to A$${currencyConverted}}`)
+        return currencyConverted;
+    } else {
+        console.log("Sorry, please select your currency and amount you wish to convert")
     }
 }
 
-convertCurrency("USD", 100);
+convertCurrency("AUD", 100);
