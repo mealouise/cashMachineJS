@@ -6,44 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <script>
-
-
-let pinAttempts = 0;
-
-
-const enterPin = (pinNumber) => {
-    // pinAttempts++;
-    console.log()
-    prompt("Please enter your pin")
-    if (pinNumber === 0354) {
-        alert ("How can we help you today?") 
-    }
-    else {
-        alert ("Please re-enter your pin number")
-        return;
-    }
-    // else (pinAttempts == 3) { 
-    //      alert ("Your account is now blocked!Please contact your bank")
-    // }
-    }
-    enterPin(1234);
-
-
-const withdrawAmount = (amount) => {
-    let balance = 500;
-    if ( amount < balance) {
-        balance -= amount;
-        console.log(`Successful transaction! You have withdrawn £${amount} and your new balance is ${balance}`)
-    } else {
-        console.log("Sorry you have insufficient funds!")
-
-    }
-
-}
-withdrawAmount(10);
-
-
-    </script>
+    <script src="app.js"></script>
 </body>
 </html>

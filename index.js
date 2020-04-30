@@ -1,4 +1,6 @@
 
+// add return to main menu
+
 
 let balance = 500;
 let pinAttempts = 0;
@@ -125,7 +127,7 @@ console.log(`Today you have done the following transactions:${transactionLogs}`)
 
 //SELET OPTION
 const selectOption = (optionSelected) => {
-    console.log("Please select ")
+    console.log("Please select option: \n1:Check balance \n2:Cash withdrawal \n3:Deposit cash \n4:Change pin \n5:Convert currency \n6:Withdraw card")
     if (optionSelected === 1) {
         console.log("You have selected: Check balance")
         checkBalance();
@@ -141,8 +143,11 @@ const selectOption = (optionSelected) => {
     } else if (optionSelected === 5) {
         console.log("You have selected: Convert currency");
         convertCurrency("AUD",100);
+    } else if ( optionSelceted === 6)  {
+        console.log("You have selected: Withdraw card")
+        return;
     } else {
-        console.log("Please select from Options 1-5")
+        console.log("Please select from Options 1-6")
     }
 }
 selectOption(2);
