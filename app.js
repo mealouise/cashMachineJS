@@ -98,12 +98,13 @@ const depositAmount = () => {
 //CHANGE PIN NUMBER
 const changePin = () => {
     userInput = prompt("Please enter your new 4 digit pin number")
-    if ( userInput.length == 4 ) {
-        pin = userInput;
-        userInput = prompt("Please confirm your new pin number")
-        pin = userInput;
-        transactionLogs.push("Pin number updated")
-        alert(`Your new pin number has now been changed to:${pin}`)
+    if (userInput.length == 4 ) {
+        // pin = userInput;
+        // userInput = prompt("Please confirm your new pin number")
+        pinValidation();
+        // pin = userInput;
+        // transactionLogs.push("Pin number updated")
+        // alert(`Your new pin number has now been changed to:${pin}`)
         selectOption();
         return pin;
     } else if (isNaN(userInput)) {
@@ -117,9 +118,18 @@ const changePin = () => {
 }
 
 //PIN CHANGE VALIDATION
-// const pinValidation = () => {
-
-// }
+    const pinValidation = () => {
+        let newPin = userInput;
+        userInput = prompt("Please confirm your new pin number")
+        if (userInput == newPin) {
+            pin = userInput;
+            transactionLogs.push("Pin number updated")
+            alert(`Your new pin number has now been changed to:${pin}`); 
+        } else {
+            alert("The number you have entered doesn't match, please try again");
+            changePin();
+        }
+    }
 
 const statements = () => {
     Array.from(transactionLogs);
@@ -178,6 +188,27 @@ const selectOption = () => {
 // selectOption(1);
 
 
-enterPin();
+enterPin(); // Starts the cash machine!
 
+
+// OLD CHANGE PIN FUNCTION WITHOUT VALIDATION
+// const changePin = () => {
+//     userInput = prompt("Please enter your new 4 digit pin number")
+//     if (userInput.length == 4 ) {
+//         // pin = userInput;
+//         // userInput = prompt("Please confirm your new pin number")
+//         // pin = userInput;
+//         // transactionLogs.push("Pin number updated")
+//         // alert(`Your new pin number has now been changed to:${pin}`)
+//         selectOption();
+//         return pin;
+//     } else if (isNaN(userInput)) {
+//        alert("Not recognised, please enter numerical value");
+//        changePin();
+//     } else {
+//         alert("Sorry please enter a number that is 4 digits long")
+//         changePin();
+    
+//     }
+// }
 
