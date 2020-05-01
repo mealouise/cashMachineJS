@@ -100,8 +100,10 @@ const changePin = () => {
     userInput = prompt("Please enter your new 4 digit pin number")
     if ( userInput.length == 4 ) {
         pin = userInput;
+        userInput = prompt("Please confirm your new pin number")
+        pin = userInput;
         transactionLogs.push("Pin number updated")
-        alert(`Your new pin number is:${pin}`)
+        alert(`Your new pin number has now been changed to:${pin}`)
         selectOption();
         return pin;
     } else if (isNaN(userInput)) {
@@ -113,6 +115,19 @@ const changePin = () => {
     
     }
 }
+
+//PIN CHANGE VALIDATION
+// const pinValidation = () => {
+
+// }
+
+const statements = () => {
+    Array.from(transactionLogs);
+    alert(`Your statement is: ${transactionLogs}`);
+    selectOption();
+}
+
+
 
 
 //CONVERT CURRENCY
@@ -131,10 +146,9 @@ const convertCurrency = () => {
     }   
 }
 
-
 //SELET OPTION
 const selectOption = () => {
-    userInput = prompt("Please select from the following options: \n1: Check balance \n2: Cash withdrawal \n3: Deposit cash \n4: Change pin \n5: Convert currency \n6: Withdraw card")
+    userInput = prompt("Please select from the following options: \n1: Check balance \n2: Cash withdrawal \n3: Deposit cash \n4: Change pin \n5: Convert currency \n6: Check Statement \n7: Withdraw card")
     if (userInput == 1) {
         checkBalance();
     } else if (userInput == 2) {
@@ -149,11 +163,14 @@ const selectOption = () => {
     } else if (userInput == 5) {
         alert("You have selected: Convert currency");
         convertCurrency();
-    } else if ( userInput == 6)  {
+    } else if (userInput == 6) {
+        alert("You have selected: Check statement");
+        statements();
+    } else if ( userInput == 7)  {
         alert("Thank you for using the bank.Enjoy your day!");
         return;
     } else {
-        alert("Please select from Options 1-6");
+        alert("Please select from Options 1-7");
         selectOption();
     }
 }
@@ -162,3 +179,5 @@ const selectOption = () => {
 
 
 enterPin();
+
+
