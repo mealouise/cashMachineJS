@@ -14,29 +14,24 @@ const usDollars = 1.2;
 //ENTER PIN
 const enterPin = () => {
     userInput = prompt("Please enter your pin");
-    while(pinAttempts <= 3) {
+    pinAttempts++;
+    if(pinAttempts <= 3) {
         if (userInput == pin) {
             selectOption();
         } else if (pinAttempts === 3) {
             alert("Sorry your account is now blocked");
             return;     
+        } else if (isNaN(userInput)) {
+            alert("Not recognised, please enter numerical value");
+            enterPin();
         } else {
             alert("Please re-enter your pin");
-            pinAttempts++;
             enterPin();
-        }
     }
 }
+}
 
-// } else if (userInput !== pin) {
-//     alert("Please re-enter your pin");
-//     pinAttempts++;
-//     console.log(pinAttempts);
-//     enterPin();
-// } else {
-//     alert("Sorry your account is now blocked");
-//     return;
-// }
+
 
 
 
@@ -74,11 +69,12 @@ const withdrawAmount = () => {
     } else if ( userInput > 251) {
         alert("You have reached your maximum withdrawal amount today")
         selectOption();
+    } else if (isNaN(userInput)) {
+        alert("Not recognised, please enter numerical value");
     } else {
-        alert("Sorry you have insufficient funds!")
+        alert("Sorry you have insufficient funds!");
         selectOption();
-
-    }
+    } 
 }
 // withdrawAmount(300);
 
@@ -87,10 +83,12 @@ const depositAmount = () => {
     userInput = prompt("Please enter the amount you wish to deposit")
     if (userInput <= maxDepositLimit) {
         balance += parseInt(userInput);
-        transactionLogs.push(`£${deposit} deposited into your account`)
+        transactionLogs.push(`£${userInput} deposited into your account`);
         alert(`Successful transaction! You have deposited £${userInput} and your new balance is £${balance}`);
         selectOption();
         return balance;
+    } else if (isNaN(userInput)) {
+        alert("Not recognised, please enter numerical value");
     } else {
         alert("Sorry you have reached the maximum you can deposit today");
         selectOption();
@@ -106,11 +104,14 @@ const changePin = () => {
         alert(`Your new pin number is:${pin}`)
         selectOption();
         return pin;
+    } else if (isNaN(userInput)) {
+       alert("Not recognised, please enter numerical value");
+       changePin();
     } else {
         alert("Sorry please enter a number that is 4 digits long")
         changePin();
-    }
     
+    }
 }
 
 
@@ -122,13 +123,13 @@ const convertCurrency = () => {
         balance -= userInput;
         alert(`You have successfully converted $${currencyConverted} and your new balance is £${balance}`);
         selectOption();
+    } else if (isNaN(userInput)) {
+        alert("Not recognised, please enter numerical value");
     } else {
         alert("Sorry you have insufficient funds");
         selectOption();
-    }
-    
+    }   
 }
-
 
 
 //SELET OPTION
@@ -161,5 +162,3 @@ const selectOption = () => {
 
 
 enterPin();
-
-//change pin prompts - USER INPUT WHAT IS YOUR NEW PIN & PLEASE CONFIRM YOUR pin.
