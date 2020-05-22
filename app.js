@@ -31,22 +31,7 @@ const enterPin = () => {
 }
 }
 
-
-
-
-
-
-
-    
-    // else if (pinAttempts  === 3) {
-    //     alert("Your account is now blocked!Please contact your bank")
-    //     return
-    // } else {
-    //     pinAttempts++;
-    //     prompt("Please re-enter your pin number") //
-    //     console.log(`Number of pin attempts:${pinAttempts}`) //
-    //     return;
-    // }
+   
 
 //CHECK BALANCE
 const checkBalance = () => {
@@ -67,7 +52,7 @@ const withdrawAmount = () => {
         selectOption();
         return balance;
     } else if ( userInput > 251) {
-        alert("You have reached your maximum withdrawal amount today")
+        alert("You have reached your maximum withdrawal amount today");
         selectOption();
     } else if (isNaN(userInput)) {
         alert("Not recognised, please enter numerical value");
@@ -80,7 +65,7 @@ const withdrawAmount = () => {
 
 //DEPOSIT FROM THEIR ACCOUNT - UNDER £250 NOT WORKING CORRECTLY!!!
 const depositAmount = () => {
-    userInput = prompt("Please enter the amount you wish to deposit")
+    userInput = prompt("Please enter the amount you wish to deposit");
     if (userInput <= maxDepositLimit) {
         balance += parseInt(userInput);
         transactionLogs.push(`£${userInput} deposited into your account`);
@@ -97,21 +82,16 @@ const depositAmount = () => {
 
 //CHANGE PIN NUMBER
 const changePin = () => {
-    userInput = prompt("Please enter your new 4 digit pin number")
+    userInput = prompt("Please enter your new 4 digit pin number");
     if (userInput.length == 4 ) {
-        // pin = userInput;
-        // userInput = prompt("Please confirm your new pin number")
         pinValidation();
-        // pin = userInput;
-        // transactionLogs.push("Pin number updated")
-        // alert(`Your new pin number has now been changed to:${pin}`)
         selectOption();
         return pin;
     } else if (isNaN(userInput)) {
        alert("Not recognised, please enter numerical value");
        changePin();
     } else {
-        alert("Sorry please enter a number that is 4 digits long")
+        alert("Sorry please enter a number that is 4 digits long");
         changePin();
     
     }
@@ -120,10 +100,10 @@ const changePin = () => {
 //PIN CHANGE VALIDATION
     const pinValidation = () => {
         let newPin = userInput;
-        userInput = prompt("Please confirm your new pin number")
+        userInput = prompt("Please confirm your new pin number");
         if (userInput == newPin) {
             pin = userInput;
-            transactionLogs.push("Pin number updated")
+            transactionLogs.push("Pin number updated");
             alert(`Your new pin number has now been changed to:${pin}`); 
         } else {
             alert("The number you have entered doesn't match, please try again");
@@ -158,7 +138,7 @@ const convertCurrency = () => {
 
 //SELET OPTION
 const selectOption = () => {
-    userInput = prompt("Please select from the following options: \n1: Check balance \n2: Cash withdrawal \n3: Deposit cash \n4: Change pin \n5: Convert currency \n6: Check Statement \n7: Withdraw card")
+    userInput = prompt("Please select from the following options: \n1: Check balance \n2: Cash withdrawal \n3: Deposit cash \n4: Change pin \n5: Convert currency \n6: Check Statement \n7: Exit");
     if (userInput == 1) {
         checkBalance();
     } else if (userInput == 2) {
@@ -177,7 +157,7 @@ const selectOption = () => {
         alert("You have selected: Check statement");
         statements();
     } else if ( userInput == 7)  {
-        alert("Thank you for using the bank.Enjoy your day!");
+        alert("Thank you for using this ATM.Enjoy your day!");
         return;
     } else {
         alert("Please select from Options 1-7");
@@ -192,6 +172,7 @@ enterPin(); // Starts the cash machine!
 
 
 // OLD CHANGE PIN FUNCTION WITHOUT VALIDATION
+
 // const changePin = () => {
 //     userInput = prompt("Please enter your new 4 digit pin number")
 //     if (userInput.length == 4 ) {
@@ -211,4 +192,15 @@ enterPin(); // Starts the cash machine!
     
 //     }
 // }
+//FIRST ATTEMPT AT LETTING USER ENTER PIN 3 TIMES BEFORE BLOCKING THERE ACCOUNT
+
+ // else if (pinAttempts  === 3) {
+    //     alert("Your account is now blocked!Please contact your bank")
+    //     return
+    // } else {
+    //     pinAttempts++;
+    //     prompt("Please re-enter your pin number") //
+    //     console.log(`Number of pin attempts:${pinAttempts}`) //
+    //     return;
+    // }
 
